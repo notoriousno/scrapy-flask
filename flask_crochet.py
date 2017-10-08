@@ -1,8 +1,9 @@
 """
 If Twisted's WSGI server is not desired in favor for solutions like uwsgi or gunicorn or anything similar,
 the `crochet` library can execute Twisted code in an isolated thread. Be EXTREMELY careful with this solution!
-Python's WSGI servers generally use threads, as does `crochet`, which means there might be situations where
-one thread may spawn multiple threads.
+Python's WSGI servers generally use threads, as does `crochet`, and/or processes which means there might be
+situations where one thread may spawn multiple threads. It's up to the developers to account for intricacies
+hen dealing with multi threaded/process applications.
 
 Local usage:
 
