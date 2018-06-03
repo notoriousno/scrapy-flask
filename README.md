@@ -42,7 +42,7 @@ Let's setup a quick project structure.
 This will be a bit different from those accustomed to a traditional Scrapy project structure, but not by much.
 First, let's create a file (`quote_scraper.py`) that will hold a spider that scrapes `http://quotes.toscrape.com`.
 
-```
+``` python
 import re
 import scrapy
 
@@ -91,7 +91,7 @@ Commonly, stats would be stored in a database, but for demonstration purposes, I
 Let's embed `CrawlerRunner` to run the `QuoteSpider`, created in the previous section, within a Flask application (you can use Django, Bottle, Cherrypy, etc. Flask is just very common).
 Let's create two endpoints, `/crawl` to actually scrape and `/results` that will provide the results of the scrape.
 
-```
+``` python
 import json
 from flask import Flask
 from scrapy.crawler import CrawlerRunner
@@ -187,7 +187,7 @@ Most will want to deploy using a WSGI server like Gunicorn, and for those people
 Fortunately, there's a great project called [`crochet`](https://crochet.readthedocs.io/en/stable/#) that allows Twisted code to run in a non-async code base.
 Without dwelling too much how `crochet` works, let's create a new `flask_crochet.py` file:
 
-```
+``` python
 import crochet
 crochet.setup()     # initialize crochet
 
