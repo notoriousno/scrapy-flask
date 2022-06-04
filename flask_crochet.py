@@ -23,6 +23,7 @@ from flask import Flask
 from scrapy.crawler import CrawlerRunner
 
 from quote_scraper import QuoteSpider
+# from Spiders.immoland import Spider as QuoteSpider
 
 
 app = Flask('Scrape With Flask')
