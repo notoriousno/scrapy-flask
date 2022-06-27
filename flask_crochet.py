@@ -22,8 +22,9 @@ import json
 from flask import Flask
 from scrapy.crawler import CrawlerRunner
 
-from quote_scraper import QuoteSpider
-# from Spiders.immoland import Spider as QuoteSpider
+# from quote_scraper import QuoteSpider
+# from Spiders.immoland_scraper import Spider as QuoteSpider
+from Spiders.Affare_scraper import Spider as QuoteSpider
 
 
 app = Flask('Scrape With Flask')
@@ -38,7 +39,7 @@ scrape_complete = False
 def greeting(name='World'):
     return 'Hello %s!' % (name)
 
-@app.route('/crawl')
+@app.route('/crawl/')
 def crawl_for_quotes():
     """
     Scrape for quotes

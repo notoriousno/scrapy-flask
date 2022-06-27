@@ -41,7 +41,7 @@ class QuoteSpider(scrapy.Spider):
                 "title": item['title'] ,
                 "adresse":item['adresse'],
                 "price":item['price'] ,
-                "salle_de_":item['salle_de_bain'],
+                "salle_de_salle_de_bain":item['salle_de_bain'],
                 "nbpiece":item['nbpiece'],
                 "typeImm":item['typeImm'],
                 "agence":item['agence']

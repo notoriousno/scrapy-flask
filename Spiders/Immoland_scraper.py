@@ -1,13 +1,15 @@
+import re
+
 import scrapy
 
 from Model.RealestateScraperItem import RealestateScraperItem
 
 
 class Spider(scrapy.Spider):
-    name = 'immoLandSpider'
-    start_urls = [
-        'https://www.immoland.tn/advanced-search/?lat=&lng=&use_radius=on&radius=2&status=a-vendre&type=&bedrooms=&bathrooms=&min-price=&max-price=',
-        ]
+    name = 'quote'
+    start_urls = ['https://www.immoland.tn/advanced-search/?lat=&lng=&use_radius=on&radius=2&status=a-vendre&type=&bedrooms=&bathrooms=&min-price=&max-price=',]
+    quotation_mark_pattern = re.compile(r'“|”')
+
 
     def parse(self, response):
         list = response.css('div.item-listing-wrap')
@@ -29,7 +31,16 @@ class Spider(scrapy.Spider):
             if resource.css("img.img-fluid.wp-post-image::attr(src)").get() is not None:
                 item['thumbnail_url'] = resource.css("img.img-fluid.wp-post-image::attr(src)").get()
 
-            yield item
+            self.quotes_list.append({
+                "link": item['link'],
+                "title": item['title'],
+                "adresse": item['adresse'],
+                "price": item['price'],
+                "salle_de_salle_de_bain": item['salle_de_bain'],
+                "nbpiece": item['nbpiece'],
+                "typeImm": item['typeImm'],
+                "agence": item['agence']
+            })
         next_page = response.css("ul.pagination.justify-content-center li:nth-last-child(2) a::attr(href)").get()
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
