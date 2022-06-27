@@ -3,7 +3,7 @@ import scrapy
 from Model.RealestateScraperItem import RealestateScraperItem
 
 
-class Spider(scrapy.Spider):
+class Affare_scraper(scrapy.Spider):
     name = 'quote'
     start_urls = ['https://www.affare.tn/petites-annonces/tunisie/vente-appartement',
                   'https://www.affare.tn/petites-annonces/tunisie/vente-maison',

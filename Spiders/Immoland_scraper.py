@@ -5,7 +5,7 @@ import scrapy
 from Model.RealestateScraperItem import RealestateScraperItem
 
 
-class Spider(scrapy.Spider):
+class Immoland_scraper(scrapy.Spider):
     name = 'quote'
     start_urls = ['https://www.immoland.tn/advanced-search/?lat=&lng=&use_radius=on&radius=2&status=a-vendre&type=&bedrooms=&bathrooms=&min-price=&max-price=',]
     quotation_mark_pattern = re.compile(r'“|”')
